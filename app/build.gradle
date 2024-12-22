@@ -17,14 +17,16 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion 35
+    namespace = "com.example.android.dagger"
     defaultConfig {
         applicationId "com.example.android.dagger"
-        minSdkVersion 14
-        targetSdkVersion 32
+        minSdkVersion 21
+        targetSdkVersion 35
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "com.example.android.dagger.MyCustomTestRunner"
@@ -45,11 +47,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "21"
     }
 }
 
@@ -67,4 +69,7 @@ dependencies {
     androidTestImplementation "androidx.test:runner:$androidx_test_version"
     androidTestImplementation "androidx.test:core-ktx:$androidx_test_version"
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    implementation "com.google.dagger:dagger:2.52"
+    kapt "com.google.dagger:dagger-compiler:2.52"
 }
